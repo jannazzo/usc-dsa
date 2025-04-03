@@ -3,6 +3,6 @@ Final programming assignment for the Data Structures &amp; Algorithms course at 
 
 ## Compile Instructions
 
-Tested on Ubuntu Server 22.04.5 LTS on an x86-64 architecture.
+Tested on Ubuntu 22.04.5 LTS on an x86-64 architecture.
 
 Code is compiled using g++ with the options `-Wall -std=c++17`.
