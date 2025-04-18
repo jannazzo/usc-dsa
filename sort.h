@@ -5,12 +5,12 @@
 #ifndef SORT_HH_
 #define SORT_HH_
 
-void Mergesort(int array[], int size);
+void Mergesort(float array[], int size);
 
-void Merge(int sub1[], int sub2[], int merged[]);
+void Merge(float sub1[], float sub2[], float merged[]);
 
-int Quicksort(int array[], int l, int r);
+int Quicksort(float array[], int l, int r);
 
-int HoarePartition(int array[]); 
+int HoarePartition(float array[]);
 
 #endif

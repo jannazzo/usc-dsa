@@ -5,27 +5,8 @@
 // Question 2
 // implement mergesort and quicksort
 
-void Mergesort(int array[], int size) {
-  if ( size > 1 ) {
-    // define subarrays
-    int B[size];
-    int C[size];
-    
-    // fill subarrays
-    int floorhalf = floor(size / 2);
-    //int ceilhalf = ceil(size / 2);
-    for ( int i = 0; i < size; ++i ) {
-      if ( i < floorhalf )
-        B[i] = array[i];
-      else
-        C[i] = array[i + floorhalf];
-    }
-    Mergesort(B, floorhalf);
-    Mergesort(C, floorhalf);
-  }
-}
 
-void Merge(int B[], int p, int C[], int q, int merged[]) {
+void Merge(float B[], int p, float C[], int q, float merged[]) {
   int i = 0; 
   int j = 0;
   int k = 0;
@@ -54,15 +35,37 @@ void Merge(int B[], int p, int C[], int q, int merged[]) {
   }
 }
 
+
+void Mergesort(float array[], int size) {
+  if ( size > 1 ) {
+    // define subarrays
+    float B[size];
+    float C[size];
+    
+    // fill subarrays
+    int floorhalf = floor(size / 2);
+    int ceilhalf = ceil(size / 2);
+    for ( int i = 0; i < size; ++i ) {
+      if ( i < floorhalf )
+        B[i] = array[i];
+      else
+        C[i] = array[i];
+    }
+    Mergesort(B, floorhalf);
+    Mergesort(C, floorhalf);
+    Merge(B, floorhalf, C, ceilhalf, array);
+  }
+}
+
 // reused code to swap two indicies in an array
-void swap(int array[], int i, int j) {
-  int tmp = array[i];
+void swap(float array[], int i, int j) {
+  float tmp = array[i];
   array[i] = array[j];
   array[j] = tmp;
 }
 
-int HoarePartition(int array[], int l, int r) {
-  int p = array[l];  // set pivot as the first element
+int HoarePartition(float array[], int l, int r) {
+  float p = array[l];  // set pivot as the first element
   int i = l;
   int j = r+1;
   do {  // repeat until i >= j
@@ -82,7 +85,7 @@ int HoarePartition(int array[], int l, int r) {
   return j;
 }
 
-void Quicksort(int array[], int l, int r) {
+void Quicksort(float array[], int l, int r) {
   if ( l < r ) {
     int s = HoarePartition(array, l, r);
     Quicksort(array, l, s-1);
