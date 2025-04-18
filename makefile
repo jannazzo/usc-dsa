@@ -7,7 +7,7 @@ sort.o : sort.cpp sort.h
 	$(compile) $<
 
 driver : driver.cpp sort.o
-	$(link) $^
+	$(link) $^ -o driver
 
 clean:
-	rm *.o a.out
+	rm *.o driver

@@ -20,7 +20,7 @@ int main() {
   }
   cout << endl;
 
-  Mergesort(array, 8);
+  Quicksort(array, 0, 7);
 
   for ( int i = 0; i < 8; ++i ) {
     cout << array[i] << " ";

@@ -3,6 +3,7 @@
 #include <cmath>
 
 // Question 2
+// implement mergesort and quicksort
 
 void Mergesort(int array[], int size) {
   if ( size > 1 ) {
@@ -53,11 +54,38 @@ void Merge(int B[], int p, int C[], int q, int merged[]) {
   }
 }
 
-
-void Quicksort(int array[], int size) {
-  return;  // placeholder
+// reused code to swap two indicies in an array
+void swap(int array[], int i, int j) {
+  int tmp = array[i];
+  array[i] = array[j];
+  array[j] = tmp;
 }
 
-int HoarePartition(int array[]) {
-  return 0;  // placeholder
+int HoarePartition(int array[], int l, int r) {
+  int p = array[l];  // set pivot as the first element
+  int i = l;
+  int j = r+1;
+  do {  // repeat until i >= j
+    do {
+      i += 1;
+      if ( i >= r ) break;
+    } while ( array[i] < p );
+    do {
+      j -= 1;
+      if ( j <= l ) break;
+    } while ( array[j] > p );
+    // swap items at i & j
+    swap(array, i, j);
+  } while ( i < j );
+  swap(array, i, j);
+  swap(array, l, j);  // swap with the pivot
+  return j;
+}
+
+void Quicksort(int array[], int l, int r) {
+  if ( l < r ) {
+    int s = HoarePartition(array, l, r);
+    Quicksort(array, l, s-1);
+    Quicksort(array, s+1, r);
+  }
 }

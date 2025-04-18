@@ -9,7 +9,7 @@ void Mergesort(int array[], int size);
 
 void Merge(int sub1[], int sub2[], int merged[]);
 
-int Quicksort(int array[], int size);
+int Quicksort(int array[], int l, int r);
 
 int HoarePartition(int array[]); 
 
