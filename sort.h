@@ -2,8 +2,8 @@
 
 // Question 2
 
-#ifndef SORT_HH_
-#define SORT_HH_
+#ifndef SORT_H_
+#define SORT_H_
 
 void Mergesort(float array[], int size);
 
