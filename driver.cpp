@@ -36,4 +36,6 @@ int main() {
     SortTest("quick");
   }
 
+  cout << "Tests completed successfully" << endl;
+  return 0;
 }
