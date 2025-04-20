@@ -1,10 +1,9 @@
 // Copyright 2025 Luke Jannazzo
 
 #include <cmath>
+#include "heap.h"
 
-// Question 2
 // implement mergesort and quicksort
-
 
 void Merge(float B[], int p, float C[], int q, float merged[]) {
   int i = 0; 

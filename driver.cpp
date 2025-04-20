@@ -6,43 +6,34 @@
 using std::cout;
 using std::cin;
 using std::endl;
-#include <algorithm>
-using std::copy;
+#include <string>
+using std::string;
+#include <fstream>
+using std::ifstream;
+using std::ofstream;
 
-#include "sort.h"
+#include "tests.h"
 
 int main() {
+
   cout << "Starting Tests" << endl;
 
-  float array1[8] = {8.1, 3.4, 2.0, 9.4, 7.1, 1.9, 5.3, 4.9};
+  cout << "Please select a test." << endl;
+  cout << "These tests assume the desired input file named 'input.txt' is already located in the same directory as this program." << endl; 
+  cout << "Enter 1 for the Mergesort test." << endl;
+  cout << "Enter 2 for the Quicksort test." << endl;
 
-  cout << "Mergesort Test" << endl;
-  
-  for ( int i = 0; i < 8; ++i ) {
-    cout << array1[i] << " ";
+  int selection = 0;
+  cin >> selection;
+  if ( selection == 0 ) {
+    cout << "No selection made. Exiting." << endl;
+    return 0;
+  } else if ( selection == 1 ) {
+    cout << "Running the Mergesort test." << endl;
+    SortTest("merge");
+  } else if ( selection == 2 ) {
+    cout << "Running the Quicksort test." << endl;
+    SortTest("quick");
   }
-  cout << endl;
 
-  Mergesort(array1, 8);
-
-  for ( int i = 0; i < 8; ++i ) {
-    cout << array1[i] << " ";
-  }
-  cout << endl;
-
-  cout << "Quicksort Test" << endl;
-
-  float array2[8] = {8.1, 3.4, 2.0, 9.4, 7.1, 1.9, 5.3, 4.9};
-
-  for ( int i = 0; i < 8; ++i ) {
-    cout << array2[i] << " ";
-  }
-  cout << endl;
-
-  Quicksort(array2, 0, 7);
-
-  for ( int i = 0; i < 8; ++i ) {
-    cout << array2[i] << " ";
-  }
-  cout << endl;
 }

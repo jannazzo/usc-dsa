@@ -2,7 +2,7 @@
 
 // Implementation of HeapBottomUp for min and max heap
 
-#include <cmath>
+#include "heap.h"
 
 void MaxHeapBottomUp(int size, int array[]) {
   for ( int i = size / 2; i > 1; --i ) {
