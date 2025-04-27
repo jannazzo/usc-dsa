@@ -56,7 +56,13 @@ void ClassifyTest() {
   cout << "Data read successfully." << endl;
 
   cout << "Classifying network..." << endl;
+
+  // collect time before running
+  int startTime = clock();
   string result = BruteForceClassifyNetwork(vectorData, lineNum);
+  int endTime = clock();
+  int elapsedTime = endTime - startTime;
+  cout << "Time taken: " << elapsedTime << " ms" << endl;
 
   ofstream outputFile("output.txt");
   if ( !outputFile.is_open() ) {
@@ -103,11 +109,21 @@ void SortTest(string type) {
     arrayData[i] = vectorData[i];
 
   // pick which sort to use
-  if ( type == "merge" )
+  if ( type == "merge" ) {
+    cout << "Running Mergesort..." << endl;
+
+    int startTime = clock();
     Mergesort(arrayData, size);
-  else if ( type == "quick" )
+    int endTime = clock();
+    cout << "Time taken: " << endTime - startTime << " ms" << endl;
+  } else if ( type == "quick" ) {
+    cout << "Running Quicksort..." << endl;
+
+    int startTime = clock();
     Quicksort(arrayData, 0, size - 1);
-  else {
+    int endTime = clock();
+    cout << "Time taken: " << endTime - startTime << " ms " << endl;
+  } else {
     cout << "Invalid sort type. Exiting." << endl;
     // should never run
     return;
@@ -169,10 +185,20 @@ void HeapTest(string type) {
   // call the appropriate heap function
   if ( type == "max" ) {
     cout << "Building a max heap..." << endl;
+
+    int startTime = clock();
     MaxHeapBottomUp(size, arrayData);
+    int endTime = clock();
+    cout << "Time taken: " << endTime - startTime << " ms" << endl;
+
   } else if ( type == "min" ) {
     cout << "Building a min heap..." << endl;
+
+    int startTime = clock();
     MinHeapBottomUp(size, arrayData);
+    int endTime = clock();
+    cout << "Time taken: " << endTime - startTime << " ms" << endl;
+
   } else {
     cout << "Invalid heap type. Exiting." << endl;
     // should never run
@@ -220,7 +246,10 @@ void HorspoolTest() {
   cout << "Data read successfully." << endl;
   cout << "Searching for pattern..." << endl;
 
+  int startTime = clock();
   int result = HorspoolMatch(pattern, text);
+  int endTime = clock();
+  cout << "Time taken: " << endTime - startTime << " ms" << endl;
 
   ofstream outputFile("output.txt");
   if ( !outputFile.is_open() ) {
@@ -265,7 +294,11 @@ void FloydTest() {
   cout << "Data read successfully." << endl;
 
   cout << "Running Floyd's algorithm..." << endl;
+
+  int startTime = clock();
   vector<vector<float>> result = Floyd(vectorData);
+  int endTime = clock();
+  cout << "Time taken: " << endTime - startTime << " ms" << endl;
 
   ofstream outputFile("output.txt");
   if ( !outputFile.is_open() ) {
