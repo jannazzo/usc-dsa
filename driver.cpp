@@ -22,6 +22,7 @@ int main() {
   cout << "Enter 4 for the Max HeapBottomUp test." << endl;
   cout << "Enter 5 for the Min HeapBottomUp test." << endl;
   cout << "Enter 6 for the Horspool test." << endl;
+  cout << "Enter 7 for the Floyd test." << endl;
 
   int selection = 0;
   cin >> selection;
@@ -43,6 +44,9 @@ int main() {
   } else if ( selection == 6 ) {
     cout << "Running the Horspool test." << endl;
     HorspoolTest();
+  } else if ( selection == 7 ) {
+    cout << "Running the Floyd test." << endl;
+    FloydTest();
   } else {
     cout << "Invalid selection. Exiting." << endl;
   }

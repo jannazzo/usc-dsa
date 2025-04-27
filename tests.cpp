@@ -21,6 +21,7 @@ using std::vector;
 #include "sort.h"
 #include "heap.h"
 #include "horspool.h"
+#include "floyd.h"
 
 void ClassifyTest() {
   ifstream inputFile("input.txt");
@@ -229,4 +230,55 @@ void HorspoolTest() {
   
   outputFile << result;
   outputFile.close();
+}
+
+void FloydTest() {
+  ifstream inputFile("input.txt");
+  if ( !inputFile.is_open() ) {
+    cout << "Could not open input. Error." << endl;  // couldn't open file, exit the function
+    return;
+  }
+  vector<vector<float>> vectorData;
+  int lineNum = 0;
+  string currentLine;
+  cout << "Reading data from input.txt..." << endl;
+  while (getline(inputFile, currentLine)) {
+    ++lineNum;
+    vector<float> currentRow;
+    stringstream ss(currentLine);
+    float currentNum;
+    while (ss >> currentNum) {
+      currentRow.push_back(currentNum);
+    }
+    if ( !currentRow.empty() ) {
+      vectorData.push_back(currentRow);
+    }
+  }
+  inputFile.close();
+  // after this, the vectorData should be a 2D vector of floats
+
+  if ( vectorData.empty() ) {
+    cout << "Error. Could not read any data." << endl;
+    return;
+  }
+  cout << "Data read successfully." << endl;
+
+  cout << "Running Floyd's algorithm..." << endl;
+  vector<vector<float>> result = Floyd(vectorData);
+
+  ofstream outputFile("output.txt");
+  if ( !outputFile.is_open() ) {
+    cout << "Could not open output.txt. Exiting." << endl;
+    return;  // didn't work
+  }
+
+  // output the result to the output file
+  for ( int i = 0; i < result.size(); ++i ) {
+    for ( int j = 0; j < result[i].size(); ++j ) {
+      outputFile << result[i][j];
+      if ( j < result[i].size() - 1 )  // we don't want the space after the last element
+        outputFile << " ";
+    }
+    outputFile << endl;
+  }
 }

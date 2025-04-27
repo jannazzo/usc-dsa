@@ -19,5 +19,6 @@ void ClassifyTest();
 void SortTest(string type);
 void HeapTest(string type);
 void HorspoolTest();
+void FloydTest();
 
 #endif
