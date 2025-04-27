@@ -11,17 +11,33 @@ Compiler commands are included in the makefile. The compiler is using C++17 stan
 
 `make driver`: Builds a driver file that contains tests for all of the functions.
 
-`make clean`: Deletes all object code and executables from the working directory. Be sure to run this before committing changes to git.
+`make clean`: Deletes all object code, executables, and input/output text files from the working directory. Be sure to run this before committing changes to git.
 
-## Input Formatting
+## Input & Output Formatting
 
 For each algorithm, the format of the `input.txt` file is defined as follows. NOTE: The program does not perform input validation. It assumes that each input file will be formatted exactly as described here.
 
 Network Classification Algorithm:
 - Input is an n x n adjacency matrix with columns delimited by spaces and rows delimited by newlines.
+- All values are 0 or 1, and only 0's on the diagonal.
 
 Sorting Algorithms:
 - Input is a n length array of floating-point numbers, delimited by spaces.
+- Output is the sorted array, formatted the same way.
 
 Heap Algorithm:
-- Input is an n length array of integers, delimited by spaces.
+- Input is:
+    - On the first line, an integer containing the size n of the array representing the heap.
+    - On the second line, an n length array of integers, delimited by spaces.
+- Output is a single line containing the heap in array form.
+
+Horspool's String Matching Algorithm:
+- Input is two strings:
+    - On the first line, a string that is the pattern being searched for.
+    - On the second line, a string that is the text being searched in.
+- Output will just contain an integer that is the index of the left end of the located string or -1 if not found.
+
+Floyd's Algorithm:
+- Input is an n x n distance matrix with nonnegative float numbers.
+- Diagonal entries are all 0.
+- Output will be a distance matrix formatted the same way, representing the shortest path among all pairs.
