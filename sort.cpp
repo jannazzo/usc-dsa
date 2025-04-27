@@ -46,14 +46,17 @@ void Mergesort(float array[], int size) {
     float C[ceilhalf];
 
     // fill subarrays 
-    for ( int i = 0; i < size; ++i ) {
-      if ( i < floorhalf )
-        B[i] = array[i];
-      else
-        C[i] = array[floorhalf + i];
+    for ( int i = 0; i < floorhalf; ++i ) {
+      B[i] = array[i];
     }
+    for ( int i = 0; i < ceilhalf; ++i ) {
+      C[i] = array[floorhalf + i];
+    }
+
+    // recursively sort subarrays
     Mergesort(B, floorhalf);
     Mergesort(C, ceilhalf);
+    // merge the two sorted subarrays
     Merge(B, floorhalf, C, ceilhalf, array);
   }
 }
