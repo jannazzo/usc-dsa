@@ -3,53 +3,65 @@
 // tests for the functions in this repo
 // take input from driver
 
+#include <iostream>
+using std::cout;
+using std::endl;
 #include <string>
 using std::string;
 #include <fstream>
 using std::ifstream;
 using std::ofstream;
+#include <vector>
+using std::vector;
 
 #include "sort.h"
 #include "heap.h"
 
 void SortTest(string type) {
   // opens the file, parses the input, calls merge/quicksort, writes to the output file
-  ifstream inputFileforCount("input.txt");
-  if ( !inputFileforCount.is_open() )
+  ifstream inputFile("input.txt");
+  if ( !inputFile.is_open() )
     return;  // couldn't open file, exit the function 
   
-  // count the numbers in the array
-  int size;
-  float tmp;
-  while ( inputFileforCount >> tmp )  // will be false when the file is empty
-    ++size;
-  inputFileforCount.close();  // close the file
+  vector<float> vectorData;
+  float currentNum;
 
-  if ( size > 0 ) {  // only works if we found the array has a nonzero size
-    ifstream inputFile("input.txt");  // open the file again, but now we know the size.
-    float array[size];
-    for ( int i = 0; (i < size) && (inputFile >> array[i]); ++i );  // reads in the data
-    inputFile.close();
-    // pick which sort to use
-    if ( type == "merge" )
-      Mergesort(array, size);
-    else if ( type == "quick" )
-      Quicksort(array, 0, size - 1);
-    else
-      return;
-    
-    ofstream outputFile("output.txt");
-    if ( !outputFile.is_open() )
-      return;  // didn't work
+  cout << "Reading data from input.txt..." << endl;
 
-    for ( int j = 0; j < size; ++j ) {
-      outputFile << array[j];
-      if ( j < size - 1 )  // we don't want the space after the last element
-        outputFile << " ";
-    }
-    outputFile.close();
+  while (inputFile >> currentNum) {
+    vectorData.push_back(currentNum);
+  }
 
-  } else return;
+  if ( vectorData.empty() ) {
+    cout << "Could not read any data. Exiting." << endl;
+    return;
+  }
+
+  // convert from vector to standard array
+  const int size = vectorData.size();
+  float arrayData[size];
+  for ( int i = 0; i < size; ++i )
+    arrayData[i] = vectorData[i];
+
+  // pick which sort to use
+  if ( type == "merge" )
+    Mergesort(arrayData, size);
+  else if ( type == "quick" )
+    Quicksort(arrayData, 0, size - 1);
+  else
+    return;
+  
+  ofstream outputFile("output.txt");
+  if ( !outputFile.is_open() )
+    return;  // didn't work
+
+  for ( int j = 0; j < size; ++j ) {
+    outputFile << arrayData[j];
+    if ( j < size - 1 )  // we don't want the space after the last element
+      outputFile << " ";
+  }
+  outputFile.close();
+
 }
 
 void HeapTest(string type) {

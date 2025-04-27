@@ -1,9 +1,11 @@
 // Copyright 2025 Luke Jannazzo
 
 #include <cmath>
-#include "heap.h"
 
 // implement mergesort and quicksort
+
+// these fuctions are written using stadnard arrays for algorithmic simplicity
+// this is done to allow for consistency with pseudocode implementations elsewhere in the course
 
 void Merge(float B[], int p, float C[], int q, float merged[]) {
   int i = 0; 
