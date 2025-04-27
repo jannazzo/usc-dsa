@@ -45,7 +45,6 @@ int main() {
     HeapTest("min");
   } else {
     cout << "Invalid selection. Exiting." << endl;
-    return 0;
   }
 
   return 0;
