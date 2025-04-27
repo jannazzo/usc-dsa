@@ -19,7 +19,7 @@ void MaxHeapBottomUp(int size, int array[]) {
       int j = 2*k + 1;  // left child
       if ( j + 1 < size ) {
         if (array[j] < array[j+1]) {
-          j++;
+          ++j;
         }
       }
 
@@ -49,7 +49,7 @@ void MinHeapBottomUp(int size, int array[]) {
       int j = 2*k + 1;  // left child
       if ( j + 1 < size ) {
         if (array[j] > array[j+1]) {
-          j++;
+          ++j;
         }
       }
 
@@ -63,4 +63,3 @@ void MinHeapBottomUp(int size, int array[]) {
     array[k] = v;
   }
 }
-
