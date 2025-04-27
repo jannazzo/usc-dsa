@@ -39,5 +39,7 @@ For each algorithm, the format of the `input.txt` file is defined as follows. NO
 
 **Floyd's Algorithm:**
 - Input is an n x n distance matrix with nonnegative float numbers.
-- Diagonal entries are all 0.
+    - Rows are delimited by newlines, columns delimited by spaces
+    - If a distance is infinity (no edge exists), the matrix will contain the character 'i' instead of a float number.
+    - Diagonal entries are all 0.
 - Output will be a distance matrix formatted the same way, representing the shortest path among all pairs.
