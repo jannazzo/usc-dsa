@@ -21,10 +21,11 @@ using std::vector;
 #include "sort.h"
 #include "heap.h"
 
-string ClassifyTest() {
+void ClassifyTest() {
   ifstream inputFile("input.txt");
   if ( !inputFile.is_open() ) {
-    return "Could not open input. Error.";  // couldn't open file, exit the function 
+    cout << "Could not open input. Error." << endl;  // couldn't open file, exit the function
+    return;
   }
   vector<vector<int>> vectorData;
   int lineNum = 0;
@@ -47,14 +48,22 @@ string ClassifyTest() {
   // assumes columns are the same size as rows
 
   if ( vectorData.empty() ) {
-    return "Error. Could not read any data.";
+    cout << "Error. Could not read any data." << endl;
+    return;
   }
   cout << "Data read successfully." << endl;
 
   cout << "Classifying network..." << endl;
   string result = BruteForceClassifyNetwork(vectorData, lineNum);
 
-  return "This is a " + result;
+  ofstream outputFile("output.txt");
+  if ( !outputFile.is_open() ) {
+    cout << "Could not open output.txt. Exiting." << endl;
+    return;  // didn't work
+  }
+  outputFile << result;
+  outputFile.close();
+  cout << "Network classified successfully." << endl;
 
 }
 

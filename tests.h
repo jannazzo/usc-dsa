@@ -12,7 +12,7 @@ using std::string;
 #ifndef TESTS_H_
 #define TESTS_H_
 
-string ClassifyTest();
+void ClassifyTest();
 void SortTest(string type);
 void HeapTest(string type);
 

@@ -30,7 +30,7 @@ int main() {
   cin >> selection;
   if ( selection == 1 ) {
     cout << "Running the Network Classification Test" << endl;
-    cout << ClassifyTest() << endl;
+    ClassifyTest();
   } else if ( selection == 2 ) {
     cout << "Running the Mergesort test." << endl;
     SortTest("merge");
@@ -48,6 +48,5 @@ int main() {
     return 0;
   }
 
-  cout << "Tests completed successfully" << endl;
   return 0;
 }
