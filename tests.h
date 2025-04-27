@@ -1,6 +1,9 @@
 // Copyright 2025 Luke Jannazzo
 
 // tests for the functions in this repo
+// the tests will open the input file, call the algorithm,
+// and write the output to the output file
+// the driver creates the UI to call the test funcitons
 
 #include <string>
 using std::string;
@@ -15,5 +18,6 @@ using std::string;
 void ClassifyTest();
 void SortTest(string type);
 void HeapTest(string type);
+void HorspoolTest();
 
 #endif

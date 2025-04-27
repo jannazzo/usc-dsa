@@ -19,7 +19,7 @@ void GenerateShiftTable(string pattern,  int shiftTable[ALPHABET_SIZE]) {
 }
 
 
-int Horspool(string pattern, string text) {
+int HorspoolMatch(string pattern, string text) {
   int n = text.length();
   int m = pattern.length();
   int shiftTable[ALPHABET_SIZE];

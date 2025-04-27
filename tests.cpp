@@ -20,6 +20,7 @@ using std::vector;
 #include "classify.h"
 #include "sort.h"
 #include "heap.h"
+#include "horspool.h"
 
 void ClassifyTest() {
   ifstream inputFile("input.txt");
@@ -191,3 +192,41 @@ void HeapTest(string type) {
 
 }
 
+void HorspoolTest() {
+  // test the horspool function
+  ifstream inputFile("input.txt");
+  if ( !inputFile.is_open() ) {
+    cout << "Could not open input.txt. Exiting." << endl;
+    return;  // couldn't open file, exit the function 
+  }
+
+  string pattern;
+  string text;
+
+  cout << "Reading data from input.txt..." << endl;
+
+  // read the first line of the file to get the pattern
+  getline(inputFile, pattern);
+  // read the second line of the file to get the text
+  getline(inputFile, text);
+  inputFile.close();
+
+  if ( pattern.empty() || text.empty() ) {
+    cout << "Could not read any data. Exiting." << endl;
+    return;
+  }
+
+  cout << "Data read successfully." << endl;
+  cout << "Searching for pattern..." << endl;
+
+  int result = HorspoolMatch(pattern, text);
+
+  ofstream outputFile("output.txt");
+  if ( !outputFile.is_open() ) {
+    cout << "Could not open output.txt. Exiting." << endl;
+    return;  // didn't work
+  }
+  
+  outputFile << result;
+  outputFile.close();
+}

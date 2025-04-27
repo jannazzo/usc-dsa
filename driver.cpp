@@ -1,16 +1,12 @@
 // Copyright 2025 Luke Jannazzo
 
 // Driver file for algorithm implementations
+// calls test functions from tests.h that will handle I/O and call the algorithms
 
 #include <iostream>
 using std::cout;
 using std::cin;
 using std::endl;
-#include <string>
-using std::string;
-#include <fstream>
-using std::ifstream;
-using std::ofstream;
 
 #include "tests.h"
 
@@ -25,6 +21,7 @@ int main() {
   cout << "Enter 3 for the Quicksort test." << endl;
   cout << "Enter 4 for the Max HeapBottomUp test." << endl;
   cout << "Enter 5 for the Min HeapBottomUp test." << endl;
+  cout << "Enter 6 for the Horspool test." << endl;
 
   int selection = 0;
   cin >> selection;
@@ -43,6 +40,9 @@ int main() {
   } else if ( selection == 5 ) {
     cout << "Running the Min HeapBottomUp test." << endl;
     HeapTest("min");
+  } else if ( selection == 6 ) {
+    cout << "Running the Horspool test." << endl;
+    HorspoolTest();
   } else {
     cout << "Invalid selection. Exiting." << endl;
   }

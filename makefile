@@ -14,7 +14,10 @@ sort.o : sort.cpp sort.h
 heap.o : heap.cpp heap.h
 	$(compile) $<
 
-driver : driver.cpp tests.o classify.o sort.o heap.o
+horspool.o : horspool.cpp horspool.h
+	$(compile) $<
+
+driver : driver.cpp tests.o classify.o sort.o heap.o horspool.o
 	$(link) $^ -o driver
 
 clean:

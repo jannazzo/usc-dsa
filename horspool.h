@@ -12,6 +12,6 @@ using std::string;
 const int ALPHABET_SIZE = 27;  // english alphabet and space
 
 void GenerateShiftTable(string pattern,  int shiftTable[ALPHABET_SIZE]);
-int Horspool(string pattern, string text);
+int HorspoolMatch(string pattern, string text);
 
 #endif
