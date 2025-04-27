@@ -1,59 +1,59 @@
 // Copyright 2025 Luke Jannazzo
 
-#include <cmath>
-
 // implement mergesort and quicksort
 
 // these fuctions are written using stadnard arrays for algorithmic simplicity
 // this is done to allow for consistency with pseudocode implementations elsewhere in the course
 
-void Merge(float B[], int p, float C[], int q, float merged[]) {
+void Merge(float B[], int p, float C[], int q, float A[]) {
   int i = 0; 
   int j = 0;
   int k = 0;
-  while ( i < p && j < q) {
+  while ( i < p && j < q ) {
     if ( B[i] <= C[j] ) {
-        merged[k] = B[i];
+        A[k] = B[i];
         ++i;
     } else {
-        merged[k] = C[j];
+        A[k] = C[j];
         ++j;
     }
     ++k;
   }
+
   if ( i == p ) {
     while ( j < q ) {
-      merged[k] = C[j];
+      A[k] = C[j];
       ++j;
       ++k;
     }
   } else {
-    while ( i < q ) {
-        merged[k] = B[i];
+    while ( i < p ) {
+        A[k] = B[i];
         ++i;
         ++k;
       }
   }
 }
 
-
 void Mergesort(float array[], int size) {
   if ( size > 1 ) {
+    // define shorthand terms
+    int floorhalf = size / 2;  // integer division means this is floor
+    int ceilhalf = size - floorhalf;
+
     // define subarrays
-    float B[size];
-    float C[size];
-    
-    // fill subarrays
-    int floorhalf = floor(size / 2);
-    int ceilhalf = ceil(size / 2);
+    float B[floorhalf];
+    float C[ceilhalf];
+
+    // fill subarrays 
     for ( int i = 0; i < size; ++i ) {
       if ( i < floorhalf )
         B[i] = array[i];
       else
-        C[i] = array[i];
+        C[i] = array[floorhalf + i];
     }
     Mergesort(B, floorhalf);
-    Mergesort(C, floorhalf);
+    Mergesort(C, ceilhalf);
     Merge(B, floorhalf, C, ceilhalf, array);
   }
 }

@@ -34,6 +34,9 @@ int main() {
   } else if ( selection == 2 ) {
     cout << "Running the Quicksort test." << endl;
     SortTest("quick");
+  } else {
+    cout << "Invalid selection. Exiting." << endl;
+    return 0;
   }
 
   cout << "Tests completed successfully" << endl;

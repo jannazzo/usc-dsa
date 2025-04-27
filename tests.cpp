@@ -20,8 +20,11 @@ using std::vector;
 void SortTest(string type) {
   // opens the file, parses the input, calls merge/quicksort, writes to the output file
   ifstream inputFile("input.txt");
-  if ( !inputFile.is_open() )
+  if ( !inputFile.is_open() ) {
+    cout << "Could not open input.txt. Exiting." << endl;
     return;  // couldn't open file, exit the function 
+  }
+    
   
   vector<float> vectorData;
   float currentNum;
@@ -31,12 +34,16 @@ void SortTest(string type) {
   while (inputFile >> currentNum) {
     vectorData.push_back(currentNum);
   }
+  inputFile.close();
 
   if ( vectorData.empty() ) {
     cout << "Could not read any data. Exiting." << endl;
     return;
   }
 
+  cout << "Data read successfully." << endl;
+  cout << "Sorting data..." << endl;
+  
   // convert from vector to standard array
   const int size = vectorData.size();
   float arrayData[size];
@@ -48,12 +55,16 @@ void SortTest(string type) {
     Mergesort(arrayData, size);
   else if ( type == "quick" )
     Quicksort(arrayData, 0, size - 1);
-  else
+  else {
+    cout << "Invalid sort type. Exiting." << endl;
     return;
-  
+  }
+   
   ofstream outputFile("output.txt");
-  if ( !outputFile.is_open() )
+  if ( !outputFile.is_open() ) {
+    cout << "Could not open output.txt. Exiting." << endl;
     return;  // didn't work
+  }
 
   for ( int j = 0; j < size; ++j ) {
     outputFile << arrayData[j];
