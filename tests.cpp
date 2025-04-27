@@ -238,6 +238,7 @@ void FloydTest() {
     cout << "Could not open input. Error." << endl;  // couldn't open file, exit the function
     return;
   }
+  //TODO handle when weight is infinity
   vector<vector<float>> vectorData;
   int lineNum = 0;
   string currentLine;

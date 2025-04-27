@@ -17,7 +17,10 @@ heap.o : heap.cpp heap.h
 horspool.o : horspool.cpp horspool.h
 	$(compile) $<
 
-driver : driver.cpp tests.o classify.o sort.o heap.o horspool.o
+floyd.o : floyd.cpp floyd.h
+	$(compile) $<
+
+driver : driver.cpp tests.o classify.o sort.o heap.o horspool.o floyd.o
 	$(link) $^ -o driver
 
 clean:
