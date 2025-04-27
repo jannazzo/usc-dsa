@@ -5,10 +5,12 @@
 
 #include <string>
 using std::string;
+#include <vector>
+using std::vector;
 
 #ifndef CLASSIFY_H_
 #define CLASSIFY_H_
 
-string BruteForceClassifyNetwork(int** adjacency, int size);
+string BruteForceClassifyNetwork(vector<vector<int>> adjacency, int size);
 
 #endif

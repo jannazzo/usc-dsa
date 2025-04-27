@@ -2,8 +2,10 @@
 
 #include <string>
 using std::string;
+#include <vector>
+using std::vector;
 
-void dfs(int i, int visited[], int size, int** adjacency) {
+void dfs(int i, bool visited[], int size, vector<vector<int>> adjacency) {
   visited[i] = 1;
   for ( int v = 0; v < size; ++v ) {
     if ( adjacency[i][v] == 1 && visited[v] == 0)
@@ -11,7 +13,7 @@ void dfs(int i, int visited[], int size, int** adjacency) {
   }
 }
 
-string BruteForceClassifyNetwork(int** adjacency, int size) {
+string BruteForceClassifyNetwork(vector<vector<int>> adjacency, int size) {
   // check if it's a mesh network
   bool mesh = true;
   for ( int i = 0; i < size; ++i ) {
@@ -21,7 +23,7 @@ string BruteForceClassifyNetwork(int** adjacency, int size) {
     }
   }
   if ( mesh )
-    return "fully connected mesh";
+    return "fully connected mesh network";
   
   // calcluate the degree of each node
   int degree[size];
@@ -38,7 +40,7 @@ string BruteForceClassifyNetwork(int** adjacency, int size) {
     if ( degree[i] != 2 )
       ring = false;
   }
-  int visited[size];
+  bool visited[size];
   dfs(0, visited, size, adjacency);
   for ( int i = 0; i < size; ++i ) {
     if ( visited[i] == 0 )

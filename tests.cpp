@@ -8,14 +8,55 @@ using std::cout;
 using std::endl;
 #include <string>
 using std::string;
+using std::getline;
+#include <sstream>
+using std::stringstream;
 #include <fstream>
 using std::ifstream;
 using std::ofstream;
 #include <vector>
 using std::vector;
 
+#include "classify.h"
 #include "sort.h"
 #include "heap.h"
+
+string ClassifyTest() {
+  ifstream inputFile("input.txt");
+  if ( !inputFile.is_open() ) {
+    return "Could not open input. Error.";  // couldn't open file, exit the function 
+  }
+  vector<vector<int>> vectorData;
+  int lineNum = 0;
+  string currentLine;
+  cout << "Reading data from input.txt..." << endl;
+  while (getline(inputFile, currentLine)) {
+    ++lineNum;
+    vector<int> currentRow;
+    stringstream ss(currentLine);
+    int currentNum;
+    while (ss >> currentNum) {
+      currentRow.push_back(currentNum);
+    }
+    if ( !currentRow.empty() ) {
+      vectorData.push_back(currentRow);
+    }
+  }
+  inputFile.close();
+  // after this, the vectorData should be a 2D vector of ints
+  // assumes columns are the same size as rows
+
+  if ( vectorData.empty() ) {
+    return "Error. Could not read any data.";
+  }
+  cout << "Data read successfully." << endl;
+
+  cout << "Classifying network..." << endl;
+  string result = BruteForceClassifyNetwork(vectorData, lineNum);
+
+  return "This is a " + result;
+
+}
 
 void SortTest(string type) {
   // opens the file, parses the input, calls merge/quicksort, writes to the output file
@@ -140,3 +181,4 @@ void HeapTest(string type) {
   outputFile.close();
 
 }
+

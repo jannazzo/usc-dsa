@@ -15,7 +15,7 @@ Compiler commands are included in the makefile. The compiler is using C++17 stan
 
 ## Input Formatting
 
-For each algorithm, the format of the `input.txt` file is defined as follows.
+For each algorithm, the format of the `input.txt` file is defined as follows. NOTE: The program does not perform input validation. It assumes that each input file will be formatted exactly as described here.
 
 Network Classification Algorithm:
 - Input is an n x n adjacency matrix with columns delimited by spaces and rows delimited by newlines.

@@ -5,8 +5,6 @@
 #include <string>
 using std::string;
 #include <fstream>
-using std::ifstream;
-using std::ofstream;
 
 #include "sort.h"
 #include "heap.h"
@@ -14,6 +12,7 @@ using std::ofstream;
 #ifndef TESTS_H_
 #define TESTS_H_
 
+string ClassifyTest();
 void SortTest(string type);
 void HeapTest(string type);
 
