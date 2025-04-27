@@ -5,12 +5,6 @@
 #include <string>
 using std::string;
 
-//DEBUG
-#include <iostream>
-using std::cout;
-using std::endl;
-
-
 const int ALPHABET_SIZE = 27;  // english alphabet and space
 
 // We need to map the characters to indices 0-25 for a-z and 26 for space
@@ -39,9 +33,6 @@ int HorspoolMatch(string pattern, string text) {
   int shiftTable[ALPHABET_SIZE];
   GenerateShiftTable(pattern, shiftTable);
 
-  cout << "text: " << text << endl;
-  cout << "pattern: " << pattern << endl;
-
   int i = m - 1;
   while ( i <= n - 1 ) {
     int k = 0;
@@ -49,12 +40,10 @@ int HorspoolMatch(string pattern, string text) {
       ++k;
     }
     if ( k == m ) {
-      cout << "Pattern found at index: " << i - m + 1 << endl;
       return i - m + 1;
     } else {
       i = i + shiftTable[MapCharToIndex(text[i])];
     }
   }
-  cout << "Pattern not found." << endl;
   return -1; // failed search
 }
