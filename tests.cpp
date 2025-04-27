@@ -43,7 +43,7 @@ void SortTest(string type) {
 
   cout << "Data read successfully." << endl;
   cout << "Sorting data..." << endl;
-  
+
   // convert from vector to standard array
   const int size = vectorData.size();
   float arrayData[size];
@@ -57,6 +57,7 @@ void SortTest(string type) {
     Quicksort(arrayData, 0, size - 1);
   else {
     cout << "Invalid sort type. Exiting." << endl;
+    // should never run
     return;
   }
    
@@ -76,5 +77,66 @@ void SortTest(string type) {
 }
 
 void HeapTest(string type) {
-  return;  // placeholder
+  ifstream inputFile("input.txt");
+  if ( !inputFile.is_open() ) {
+    cout << "Could not open input.txt. Exiting." << endl;
+    return;  // couldn't open file, exit the function 
+  }
+
+  // initialize variables that will store data
+  int size;
+  vector<int> vectorData;
+
+  cout << "Reading data from input.txt..." << endl;
+  // all of this reading assumes the file is formatted correctly
+  // as specified in the README
+
+  // read the first line of the file to get the size
+  string line1;
+  getline(inputFile, line1);
+  size = std::stoi(line1);
+
+  // read the second line of the file to get the data
+  int currentNum;
+  while (inputFile >> currentNum) {
+    vectorData.push_back(currentNum);
+  }
+  inputFile.close();
+
+  if ( vectorData.empty() ) {
+    cout << "Could not read any data. Exiting." << endl;
+    return;
+  }
+
+  // covert vector to standard array to be used in the heap functions
+  int arrayData[size];
+  for ( int i = 0; i < size; ++i )
+    arrayData[i] = vectorData[i];
+  cout << "Data read successfully." << endl;
+
+  // call the appropriate heap function
+  if ( type == "max" ) {
+    cout << "Building a max heap..." << endl;
+    MaxHeapBottomUp(size, arrayData);
+  } else if ( type == "min" ) {
+    cout << "Building a min heap..." << endl;
+    MinHeapBottomUp(size, arrayData);
+  } else {
+    cout << "Invalid heap type. Exiting." << endl;
+    // should never run
+    return;
+  }
+
+  ofstream outputFile("output.txt");
+  if ( !outputFile.is_open() ) {
+    cout << "Could not open output.txt. Exiting" << endl;
+    return;  // didn't work
+  }
+  for ( int j = 0; j < size; ++j ) {
+    outputFile << arrayData[j];
+    if ( j < size - 1 )  // we don't want the space after the last element
+      outputFile << " ";
+  }
+  outputFile.close();
+
 }

@@ -1,5 +1,5 @@
 // Copyright 2025 Luke Jannazzo
-//
+
 // Driver file for algorithm implementations
 
 #include <iostream>
@@ -22,6 +22,8 @@ int main() {
   cout << "These tests assume the desired input file named 'input.txt' is already located in the same directory as this program." << endl; 
   cout << "Enter 1 for the Mergesort test." << endl;
   cout << "Enter 2 for the Quicksort test." << endl;
+  cout << "Enter 3 for the Max HeapBottomUp test." << endl;
+  cout << "Enter 4 for the Min HeapBottomUp test." << endl;
 
   int selection = 0;
   cin >> selection;
@@ -34,6 +36,12 @@ int main() {
   } else if ( selection == 2 ) {
     cout << "Running the Quicksort test." << endl;
     SortTest("quick");
+  } else if ( selection == 3 ) {
+    cout << "Running the Max HeapBottomUp test." << endl;
+    HeapTest("max");
+  } else if ( selection == 4 ) {
+    cout << "Running the Min HeapBottomUp test." << endl;
+    HeapTest("min");
   } else {
     cout << "Invalid selection. Exiting." << endl;
     return 0;

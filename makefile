@@ -1,4 +1,3 @@
-
 flags = -std=c++17 -Wall
 compile = g++ $(flags) -c
 link = g++ $(flags)
@@ -16,4 +15,4 @@ driver : driver.cpp tests.o sort.o heap.o
 	$(link) $^ -o driver
 
 clean:
-	rm *.o *.txt driver
+	rm *.o input.txt output.txt driver
