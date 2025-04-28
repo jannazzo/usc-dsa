@@ -42,7 +42,7 @@ int main() {
   ifstream inputFile("input.txt");
   if ( !inputFile.is_open() ) {
     cout << "Could not open input.txt. Exiting." << endl;
-    return;  // couldn't open file, exit the function 
+    return 0;  // couldn't open file, exit the function 
   }
 
   // initialize variables that will store data
