@@ -16,6 +16,7 @@ using std::ifstream;
 using std::ofstream;
 #include <vector>
 using std::vector;
+#include <limits>
 
 #include "floyd.h"
 
@@ -26,8 +27,11 @@ int main() {
   ifstream inputFile("input.txt");
   if ( !inputFile.is_open() ) {
     cout << "Could not open input. Error." << endl;  // couldn't open file, exit the function
-    return;
+    return 1;
   }
+
+  const float INF = std::numeric_limits<float>::infinity();
+
   //TODO handle when weight is infinity
   vector<vector<float>> vectorData;
   int lineNum = 0;
@@ -37,9 +41,17 @@ int main() {
     ++lineNum;
     vector<float> currentRow;
     stringstream ss(currentLine);
-    float currentNum;
-    while (ss >> currentNum) {
-      currentRow.push_back(currentNum);
+    string currentItem;
+    while (ss >> currentItem) {
+      // if it is the string "i", set to infinity
+      // if it is anything else, assume it is a float
+      // again this assumes valid input
+      if ( currentItem == "i" ) {
+        currentRow.push_back(INF);
+      } else {
+        float currentFloat = stof(currentItem);
+        currentRow.push_back(currentFloat);
+      }
     }
     if ( !currentRow.empty() ) {
       vectorData.push_back(currentRow);
@@ -50,7 +62,7 @@ int main() {
 
   if ( vectorData.empty() ) {
     cout << "Error. Could not read any data." << endl;
-    return;
+    return 1;
   }
   cout << "Data read successfully." << endl;
 
@@ -64,7 +76,7 @@ int main() {
   ofstream outputFile("output.txt");
   if ( !outputFile.is_open() ) {
     cout << "Could not open output.txt. Exiting." << endl;
-    return;  // didn't work
+    return 1;  // didn't work
   }
 
   // output the result to the output file
