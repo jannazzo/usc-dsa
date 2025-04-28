@@ -9,7 +9,9 @@ Compiler commands are included in the makefile. The compiler is using C++17 stan
 
 ## Makefile Commands
 
-`make driver`: Builds a driver file that contains tests for all of the functions.
+Each folder has a makefile in it equipped with the following two commands.
+
+`make driver`: Builds a driver file that handles the I/O and runs the algorithm.
 
 `make clean`: Deletes all object code, executables, and input/output text files from the working directory. Be sure to run this before committing changes to git.
 
