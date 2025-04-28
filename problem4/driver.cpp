@@ -26,7 +26,7 @@ int main() {
   ifstream inputFile("input.txt");
   if ( !inputFile.is_open() ) {
     cout << "Could not open input.txt. Exiting." << endl;
-    return;  // couldn't open file, exit the function 
+    return 0;  // couldn't open file, exit the function 
   }
 
   string pattern;
@@ -42,7 +42,7 @@ int main() {
 
   if ( pattern.empty() || text.empty() ) {
     cout << "Could not read any data. Exiting." << endl;
-    return;
+    return 0;
   }
 
   cout << "Data read successfully." << endl;
@@ -56,7 +56,7 @@ int main() {
   ofstream outputFile("output.txt");
   if ( !outputFile.is_open() ) {
     cout << "Could not open output.txt. Exiting." << endl;
-    return;  // didn't work
+    return 0;  // didn't work
   }
   
   outputFile << result;

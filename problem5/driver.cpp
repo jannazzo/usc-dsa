@@ -27,7 +27,7 @@ int main() {
   ifstream inputFile("input.txt");
   if ( !inputFile.is_open() ) {
     cout << "Could not open input. Error." << endl;  // couldn't open file, exit the function
-    return 1;
+    return 0;
   }
 
   const float INF = std::numeric_limits<float>::infinity();
@@ -62,7 +62,7 @@ int main() {
 
   if ( vectorData.empty() ) {
     cout << "Error. Could not read any data." << endl;
-    return 1;
+    return 0;
   }
   cout << "Data read successfully." << endl;
 
@@ -76,7 +76,7 @@ int main() {
   ofstream outputFile("output.txt");
   if ( !outputFile.is_open() ) {
     cout << "Could not open output.txt. Exiting." << endl;
-    return 1;  // didn't work
+    return 0;  // didn't work
   }
 
   // output the result to the output file

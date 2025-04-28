@@ -67,7 +67,7 @@ int main() {
 
   if ( vectorData.empty() ) {
     cout << "Could not read any data. Exiting." << endl;
-    return;
+    return 0;
   }
 
   // covert vector to standard array to be used in the heap functions
@@ -96,13 +96,13 @@ int main() {
   } else {
     cout << "Invalid heap type. Exiting." << endl;
     // should never run
-    return;
+    return 0;
   }
 
   ofstream outputFile("output.txt");
   if ( !outputFile.is_open() ) {
     cout << "Could not open output.txt. Exiting" << endl;
-    return;  // didn't work
+    return 0;  // didn't work
   }
   for ( int j = 0; j < size; ++j ) {
     outputFile << arrayData[j];
