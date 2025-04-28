@@ -13,6 +13,10 @@ Compiler commands are included in the makefile. The compiler is using C++17 stan
 
 `make clean`: Deletes all object code, executables, and input/output text files from the working directory. Be sure to run this before committing changes to git.
 
+## Credits
+
+Algorithm definitons are referenced from the course textbook, Introduction to the Design and Analysis of Algorithms, 3rd Edition by Anany Levitin. When "the pseudocode" is referenced in code comments, it refers to the algorithm definition in this textbook.
+
 ## Input & Output Formatting
 
 For each algorithm, the format of the `input.txt` file is defined as follows. NOTE: The program does not perform input validation. It assumes that each input file will be formatted exactly as described here.
