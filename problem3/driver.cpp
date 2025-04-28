@@ -9,7 +9,6 @@ using std::cin;
 using std::endl;
 #include <string>
 using std::string;
-using std::getline;
 #include <sstream>
 using std::stringstream;
 #include <fstream>
@@ -55,7 +54,7 @@ int main() {
 
   // read the first line of the file to get the size
   string line1;
-  getline(inputFile, line1);
+  std::getline(inputFile, line1);
   size = std::stoi(line1);
 
   // read the second line of the file to get the data

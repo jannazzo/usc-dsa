@@ -32,7 +32,6 @@ int main() {
 
   const float INF = std::numeric_limits<float>::infinity();
 
-  //TODO handle when weight is infinity
   vector<vector<float>> vectorData;
   int lineNum = 0;
   string currentLine;
@@ -46,7 +45,7 @@ int main() {
       // if it is the string "i", set to infinity
       // if it is anything else, assume it is a float
       // again this assumes valid input
-      if ( currentItem == "i" ) {
+      if ( currentItem == "inf" ) {
         currentRow.push_back(INF);
       } else {
         float currentFloat = stof(currentItem);
@@ -80,13 +79,16 @@ int main() {
   }
 
   // output the result to the output file
-  for ( int i = 0; i < result.size(); ++i ) {
-    for ( int j = 0; j < result[i].size(); ++j ) {
+  int rows = result.size();
+  for ( int i = 0; i < rows; ++i ) {
+    int currentRowSize = result[i].size();
+    for ( int j = 0; j < currentRowSize; ++j ) {
       outputFile << result[i][j];
-      if ( j < result[i].size() - 1 )  // we don't want the space after the last element
+      if ( j < currentRowSize - 1 )  // we don't want the space after the last element
         outputFile << " ";
     }
-    outputFile << endl;
+    if ( i < rows - 1 )  // we don't want the newline after the last row
+      outputFile << endl;
   }
   outputFile.close();
 

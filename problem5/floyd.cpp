@@ -3,7 +3,6 @@
 #include <vector>
 using std::vector;
 #include <cmath>
-using std::min;
 
 vector<vector<float>> Floyd(vector<vector<float>> weightMatrix) {
   int n = weightMatrix.size();
@@ -13,7 +12,7 @@ vector<vector<float>> Floyd(vector<vector<float>> weightMatrix) {
   for ( int k = 0; k < n; ++k ) {
     for ( int i = 0; i < n; ++i ) {
       for ( int j = 0; j < n; ++j ) {
-        distanceMatrix[i][j] = min(distanceMatrix[i][j], distanceMatrix[i][k] + distanceMatrix[k][j]);
+        distanceMatrix[i][j] = std::min(distanceMatrix[i][j], distanceMatrix[i][k] + distanceMatrix[k][j]);
       }
     }
   }
