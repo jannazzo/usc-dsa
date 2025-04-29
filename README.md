@@ -1,5 +1,7 @@
 # USC Data Structures & Algorithms
-Final programming assignment for the Data Structures &amp; Algorithms course at the University of South Carolina
+Final programming assignment for the Data Structures &amp; Algorithms course at the University of South Carolina.
+
+This repository contains the solutions to Questions 1-5 and the second bonus question.
 
 ## Compile Instructions
 
