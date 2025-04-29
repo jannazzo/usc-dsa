@@ -1,15 +1,9 @@
 // Copyright 2025 Luke Jannazzo
 
-// Implementation of HeapBottomUp for maxheap (same as question 3)
-// and Heapsort
+// Implementation of HeapBottomUp for maxheap (same as question 3) and Heapsort
 
 #include <vector>
 using std::vector;
-
-// DEBUG
-#include <iostream>
-using std::cout;
-using std::endl;
 
 #include "heapsort.h"
 
@@ -43,7 +37,7 @@ void MaxHeapBottomUp(int size, vector<int>& array) {
   }
 }
 
-// removes the root and returns it
+// removes the root in place, leaves the "removed" item at the end
 void DeleteRoot(int currentSize, vector<int>& heap) {
   // swap root with last element
   int root = heap[0];
